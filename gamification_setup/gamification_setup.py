@@ -61,15 +61,15 @@ class GamificationSetupXBlock(StudioEditableXBlockMixin, XBlock):
         b = ""
         c = ""
         try:
-            a=str(course.tabs[0].link_func())
+            a=str(course.tabs[0].tab_dict.get('url_slug'))
         except:
             pass
         try:
-            b=str(course.tabs[0].link_func(course, None))
+            b=str(course.tabs[0].tab_dict.get('link_func', course.tabs.course_reverse_func(self.view_name)))
         except:
             pass
         try:
-            c=str(course.tabs[0].url_slug)
+            c=str(course.tabs[0].link_func()(course, course.tabs.course_reverse_func))
         except:
             pass
 

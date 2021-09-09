@@ -76,15 +76,15 @@ class GamificationSetupXBlock(StudioEditableXBlockMixin, XBlock):
         y = ""
         z = ""
         try:
-            y=str(course.tabs[0].link_func())
+            y=str(course.tabs[0].link_func)
         except:
             pass
         try:
-            z=str(course.tabs[0].name)
+            z=str(course.tabs[0].tab_id)
         except:
             pass
         try:
-            x=str(course.tabs[0].to_json())
+            x=str(course.tabs[0].view_name)
         except:
             pass
 

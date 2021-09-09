@@ -47,8 +47,8 @@ class GamificationSetupXBlock(StudioEditableXBlockMixin, XBlock):
         An example handler, which increments the data.
         """
         # Just to show data coming in...
-        #user_id = self.xmodule_runtime.user_id
-        uname = "a" #User.objects.get(id = user_id).username
+        user_id = self.xmodule_runtime.user_id
+        uname = User.objects.get(id = user_id).username
 
         self.count += 1
         return {"username": uname}

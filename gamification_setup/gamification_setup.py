@@ -52,13 +52,13 @@ class GamificationSetupXBlock(StudioEditableXBlockMixin, XBlock):
         user_id = self.xmodule_runtime.user_id
         uname = User.objects.get(id = user_id).username
 
-        #Course tabs
+        #Course tabsp
         store = modulestore()
-        with store.bulk_operations(course_id):
-            course = store.get_course(course_id)
+        #with store.bulk_operations(course_id):
+        #    course = store.get_course(course_id)
 
         self.count += 1
-        return {"username": uname, "course_tabs": str(course)}
+        return {"username": uname, "course_tabs": str(dir(store))}
 
     # TO-DO: change this to create the scenarios you'd like to see in the
     # workbench while developing your XBlock.

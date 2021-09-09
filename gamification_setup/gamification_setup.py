@@ -55,10 +55,11 @@ class GamificationSetupXBlock(StudioEditableXBlockMixin, XBlock):
         #Course tabsp
         store = modulestore()
         #with store.bulk_operations(course_id):
-        #    course = store.get_course(course_id)
+        course_id = self.scope_ids.usage_id.course_key
+        course = store.get_course(course_id)
 
         self.count += 1
-        return {"username": uname, "course_tabs": str(dir(store))}
+        return {"username": uname, "course_tabs": str(course)}
 
     # TO-DO: change this to create the scenarios you'd like to see in the
     # workbench while developing your XBlock.

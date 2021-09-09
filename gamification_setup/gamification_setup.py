@@ -59,6 +59,7 @@ class GamificationSetupXBlock(StudioEditableXBlockMixin, XBlock):
         course = store.get_course(course_id)
         a = ""
         b = ""
+        c = ""
         try:
             a=str(course.tabs[0].link_func())
         except:

@@ -72,10 +72,24 @@ class GamificationSetupXBlock(StudioEditableXBlockMixin, XBlock):
             a=str(course.tabs)
         except:
             pass
-
+        x = ""
+        y = ""
+        z = ""
+        try:
+            y=str(course.tabs[0].link_func())
+        except:
+            pass
+        try:
+            z=str(course.tabs[0].name)
+        except:
+            pass
+        try:
+            x=str(course.tabs[0].to_json())
+        except:
+            pass
 
         self.count += 1
-        return {"username": uname, "course_tabs": a + " :: " + b + " :: " + c}
+        return {"username": uname, "course_tabs": a + " :: " + b + " :: " + c + " :: " + x + " :: " + y + " :: " + z}
 
     # TO-DO: change this to create the scenarios you'd like to see in the
     # workbench while developing your XBlock.

@@ -57,9 +57,20 @@ class GamificationSetupXBlock(StudioEditableXBlockMixin, XBlock):
         #with store.bulk_operations(course_id):
         course_id = self.scope_ids.usage_id.course_key
         course = store.get_course(course_id)
+        a = ""
+        b = ""
+        try:
+            a=str(course.tabs[0].tab_dict)
+        except:
+            pass
+        try:
+            b=str(course.tabs[0].link_func)
+        except:
+            pass
+
 
         self.count += 1
-        return {"username": uname, "course_tabs": str(dir(course.tabs[0]))}
+        return {"username": uname, "course_tabs": a + " :: " + b}
 
     # TO-DO: change this to create the scenarios you'd like to see in the
     # workbench while developing your XBlock.

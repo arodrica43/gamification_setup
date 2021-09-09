@@ -59,7 +59,7 @@ class GamificationSetupXBlock(StudioEditableXBlockMixin, XBlock):
         course = store.get_course(course_id)
 
         self.count += 1
-        return {"username": uname, "course_tabs": str(course.tabs[0].link_func())}
+        return {"username": uname, "course_tabs": str(dir(course.tabs[0]))}
 
     # TO-DO: change this to create the scenarios you'd like to see in the
     # workbench while developing your XBlock.

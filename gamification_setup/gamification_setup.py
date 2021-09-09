@@ -65,7 +65,7 @@ class GamificationSetupXBlock(StudioEditableXBlockMixin, XBlock):
         except:
             pass
         try:
-            c=str(dir(course.tabs[0]))
+            c=str(dir(course.tabs[-1]))
         except:
             pass
         try:
@@ -76,15 +76,15 @@ class GamificationSetupXBlock(StudioEditableXBlockMixin, XBlock):
         y = ""
         z = ""
         try:
-            y=str(course.tabs[0].get('link_func'))
+            y=str(course.tabs[-1].get('link_func'))
         except:
             pass
         try:
-            z=str(course.tabs[0].get('tab_id'))
+            z=str(course.tabs[-1].get('tab_id'))
         except:
             pass
         try:
-            x=str(course.tabs[0].get('view_name'))
+            x=str(course.tabs[-1].get('view_name'))
         except:
             pass
 

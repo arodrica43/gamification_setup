@@ -5,7 +5,7 @@ from web_fragments.fragment import Fragment
 from xblock.core import XBlock
 from xblock.fields import Integer, Scope
 from xblockutils.studio_editable import StudioEditableXBlockMixin
-
+from django.contrib.auth.models import User
 
 class GamificationSetupXBlock(StudioEditableXBlockMixin, XBlock):
     """

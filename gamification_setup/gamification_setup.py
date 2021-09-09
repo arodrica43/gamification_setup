@@ -57,11 +57,12 @@ class GamificationSetupXBlock(StudioEditableXBlockMixin, XBlock):
         #with store.bulk_operations(course_id):
         course_id = self.scope_ids.usage_id.course_key
         course = store.get_course(course_id)
+        tab_id = str(course.tabs[-1].get('tab_id'))[11:]
         a = ""
         b = ""
         c = ""
         try:
-            b=str(dir(course.tabs))
+            b=str(course_id)
         except:
             pass
         try:
@@ -76,15 +77,15 @@ class GamificationSetupXBlock(StudioEditableXBlockMixin, XBlock):
         y = ""
         z = ""
         try:
-            y=str(course.tabs[-1].get('link_func'))
+            y=str(course.tabs[-1].get('title'))
         except:
             pass
         try:
-            z=str(course.tabs[-1].get('tab_id'))
+            z=str(tab_id)
         except:
             pass
         try:
-            x=str(course.tabs[-1].get('view_name'))
+            x=str(course.tabs[-1].get('name'))
         except:
             pass
 

@@ -60,17 +60,21 @@ class GamificationSetupXBlock(StudioEditableXBlockMixin, XBlock):
         a = ""
         b = ""
         try:
-            a=str(course.tabs[0].tab_dict)
+            a=str(course.tabs[0].link_func())
         except:
             pass
         try:
-            b=str(course.tabs[0].link_func)
+            b=str(course.tabs[0].link_func(course, None))
+        except:
+            pass
+        try:
+            c=str(course.tabs[0].url_slug)
         except:
             pass
 
 
         self.count += 1
-        return {"username": uname, "course_tabs": a + " :: " + b}
+        return {"username": uname, "course_tabs": a + " :: " + b + " :: " + c}
 
     # TO-DO: change this to create the scenarios you'd like to see in the
     # workbench while developing your XBlock.

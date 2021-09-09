@@ -1,0 +1,19 @@
+/* CSS for GamificationSetupXBlock */
+
+.gamification_setup_block .count {
+    font-weight: bold;
+}
+
+.gamification_setup_block p {
+    cursor: pointer;
+}
+
+.likert {
+  	text-align:center;
+  	width:100%;
+}
+.likert li {
+	float:left;
+	list-style-type: none;
+	margin:3.5%;
+}

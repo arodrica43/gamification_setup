@@ -1,0 +1,13 @@
+setup.py
+gamification_setup/__init__.py
+gamification_setup/gamification_setup.py
+gamification_setup/static/README.txt
+gamification_setup/static/css/gamification_setup.css
+gamification_setup/static/html/gamification_setup.html
+gamification_setup/static/js/src/gamification_setup.js
+gamification_setup_xblock.egg-info/PKG-INFO
+gamification_setup_xblock.egg-info/SOURCES.txt
+gamification_setup_xblock.egg-info/dependency_links.txt
+gamification_setup_xblock.egg-info/entry_points.txt
+gamification_setup_xblock.egg-info/requires.txt
+gamification_setup_xblock.egg-info/top_level.txt

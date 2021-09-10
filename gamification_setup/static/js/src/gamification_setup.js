@@ -96,7 +96,7 @@ function create_user(){
         fetch(agURL, ag_requestOptions)
         .then(response => response.json())
         .then(resJson => console.log(resJson)) 
-        .then(dump => alert("Your gamified user have been created!" + dashboard_url)) 
+        .then(dump => alert("Your gamified user have been created!")) 
         .then(dump2 => (window.location.replace(dashboard_url)))
         .catch(error => (console.log("Error: " + error))) 
         ))
@@ -112,16 +112,16 @@ function GamificationSetupXBlock(runtime, element) {
         //$('.count', element).text(result.count);
         uname = result["username"]; // read from result
         protocol = window.location.protocol;
-        console.log(protocol);
+        //console.log(protocol);
         hostname = window.location.hostname;
-        console.log(hostname);
+        //console.log(hostname);
         course_id = result["course_id"];
-        console.log(course_id);
+        //console.log(course_id);
         tab_id = result["tab_id"];
-        console.log(tab_id);
+        //console.log(tab_id);
         dashboard_url = protocol + "//" + hostname + "/courses/" + course_id + "/" + tab_id;
-        console.log(dashboard_url);
-        console.log("test");
+        //console.log(dashboard_url);
+        //console.log("test");
         
         questions = ["Interactuar con los demás es importante para mí.", 
                      "Me hace feliz ser capaz de ayudar a los demás.",

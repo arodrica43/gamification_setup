@@ -97,7 +97,7 @@ function create_user(){
         .then(response => response.json())
         .then(resJson => console.log(resJson)) 
         .then(dump => alert("Your gamified user have been created!")) 
-        .then(dump2 => console.log("redirecting!"))
+        .then(dump2 => window.location = dashboard_url)
         .catch(error => (console.log("Error: " + error))) 
         ))
     .catch(error => (console.log("Error: " + error)))             

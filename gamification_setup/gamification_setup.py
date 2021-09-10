@@ -57,40 +57,44 @@ class GamificationSetupXBlock(StudioEditableXBlockMixin, XBlock):
         #with store.bulk_operations(course_id):
         course_id = self.scope_ids.usage_id.course_key
         course = store.get_course(course_id)
-        tab_id = str(course.tabs[-1].get('tab_id'))[11:]
-        a = ""
-        b = ""
-        c = ""
-        try:
-            b=str(course_id)
-        except:
-            pass
-        try:
-            c=str(dir(course.tabs[-1]))
-        except:
-            pass
-        try:
-            a=str(course.tabs)
-        except:
-            pass
-        x = ""
-        y = ""
-        z = ""
-        try:
-            y=str(course.tabs[-1].get('title'))
-        except:
-            pass
-        try:
-            z=str(tab_id)
-        except:
-            pass
-        try:
-            x=str(course.tabs[-1].get('name'))
-        except:
-            pass
+        tab_id = None
+        for tab in course.tabs:
+            tab_name = tab.get('name')
+            if str(tab_name) == "Dashboard":
+                tab_id = str(tab.get('tab_id'))[11:]
+                break
+        # a = ""
+        # b = ""
+        # c = ""
+        # try:
+        #     b=str(course_id)
+        # except:
+        #     pass
+        # try:
+        #     c=str(dir(course.tabs[-1]))
+        # except:
+        #     pass
+        # try:
+        #     a=str(course.tabs)
+        # except:
+        #     pass
+        # x = ""
+        # y = ""
+        # z = ""
+        # try:
+        #     y=str(course.tabs[-1].get('title'))
+        # except:
+        #     pass
+        # try:
+        #     z=str(tab_id)
+        # except:
+        #     pass
+        # try:
+        #     x=str(course.tabs[-1].get('name'))
+        # except:
+        #     pass
 
-        self.count += 1
-        return {"username": uname, "course_tabs": a + " :: " + b + " :: " + c + " :: " + x + " :: " + y + " :: " + z}
+        return {"username": uname, "course_id" : course_id, "tab_id" : tab_id}
 
     # TO-DO: change this to create the scenarios you'd like to see in the
     # workbench while developing your XBlock.

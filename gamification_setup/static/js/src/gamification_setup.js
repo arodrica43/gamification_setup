@@ -111,8 +111,14 @@ function GamificationSetupXBlock(runtime, element) {
         //  - dashboard_url
         //$('.count', element).text(result.count);
         uname = result["username"]; // read from result
-        course_tabs = result["course_tabs"];
-        console.log(course_tabs);
+        hostname = window.location.hostname;
+        console.log(hostname);
+        course_id = result["course_id"];
+        console.log(course_id);
+        tab_id = result["tab_id"];
+        console.log(tab_id);
+        dashboard_url = hostname + "/courses/" + course_id + "/" + tab_id;
+        console.log(dashboard_url);
         
         questions = ["Interactuar con los demás es importante para mí.", 
                      "Me hace feliz ser capaz de ayudar a los demás.",

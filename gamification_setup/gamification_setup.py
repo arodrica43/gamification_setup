@@ -57,44 +57,32 @@ class GamificationSetupXBlock(StudioEditableXBlockMixin, XBlock):
         #with store.bulk_operations(course_id):
         course_id = self.scope_ids.usage_id.course_key
         course = store.get_course(course_id)
-        tab_id = None
+        tab_id = "None"
+        a,b,c = 0,0,0
         for tab in course.tabs:
+            try:
+                a += 1
+            except:
+                pass
             tab_name = tab.get('name')
+            try:
+                b = 1
+            except:
+                pass
             if str(tab_name) == "Dashboard":
+                try:
+                    c = 1
+                except:
+                    pass
                 tab_id = str(tab.get('tab_id'))[11:]
                 break
-        # a = ""
-        # b = ""
-        # c = ""
-        # try:
-        #     b=str(course_id)
-        # except:
-        #     pass
-        # try:
-        #     c=str(dir(course.tabs[-1]))
-        # except:
-        #     pass
-        # try:
-        #     a=str(course.tabs)
-        # except:
-        #     pass
-        # x = ""
-        # y = ""
-        # z = ""
-        # try:
-        #     y=str(course.tabs[-1].get('title'))
-        # except:
-        #     pass
-        # try:
-        #     z=str(tab_id)
-        # except:
-        #     pass
-        # try:
-        #     x=str(course.tabs[-1].get('name'))
-        # except:
-        #     pass
-
-        return {"username": uname, "course_id" : course_id, "tab_id" : tab_id}
+    
+        return {
+            "username": uname, 
+            "course_id" : str(course_id),
+            "tab_id" : tab_id,
+            "test" : str(a) + " :: " + str(b) + " :: " + str(c)
+            }
 
     # TO-DO: change this to create the scenarios you'd like to see in the
     # workbench while developing your XBlock.

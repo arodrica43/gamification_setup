@@ -58,12 +58,25 @@ class GamificationSetupXBlock(StudioEditableXBlockMixin, XBlock):
         course_id = self.scope_ids.usage_id.course_key
         course = store.get_course(course_id)
         tab_id = "None"
+        a,b,c = 0,0,0
         for tab in course.tabs:
-            tab_name = tab.get('name')
-            if str(tab_name) == "Dashboard":
-                tab_id = str(tab.get('tab_id'))[11:]
-                break
-    
+            try:
+                tab_name = tab.get('name')
+                a += 1
+            except:
+                pass
+            try:
+                if str(tab_name) == "Dashboard":
+                    try:
+                        tab_id = str(tab.get('tab_id'))[11:]
+                        c += 1
+                        break
+                    except:
+                        pass
+                b += 1
+            except:
+                pass
+
         return {
             "username": uname, 
             "course_id" : str(course_id),

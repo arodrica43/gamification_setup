@@ -97,7 +97,7 @@ function create_user(){
         .then(response => response.json())
         .then(resJson => console.log(resJson)) 
         .then(dump => alert("Your gamified user have been created!")) 
-        .then(dump2 => window.location = dashboard_url)
+        .then(dump2 => (window.location = dashboard_url))
         .catch(error => (console.log("Error: " + error))) 
         ))
     .catch(error => (console.log("Error: " + error)))             
@@ -119,6 +119,7 @@ function GamificationSetupXBlock(runtime, element) {
         console.log(tab_id);
         dashboard_url = hostname + "/courses/" + course_id + "/" + tab_id;
         console.log(dashboard_url);
+        console.log("test");
         
         questions = ["Interactuar con los demás es importante para mí.", 
                      "Me hace feliz ser capaz de ayudar a los demás.",

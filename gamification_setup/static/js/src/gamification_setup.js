@@ -64,7 +64,7 @@ function create_user(){
                     "gifts" : [], 
                     "accessible_mechanics" : [], 
                     "progress" : 0,
-                    "case" : "C2"  // Case selection
+                    "case" : gtype // Case selection
                     })
             },
             emotion_profile: {
@@ -111,6 +111,12 @@ function GamificationSetupXBlock(runtime, element) {
         //  - dashboard_url
         //$('.count', element).text(result.count);
         uname = result["username"]; // read from result
+        gtype = result["gtype"]
+        if(gtype == "Adaptive"){
+          gtype = "C2";
+        }else{
+          gtype = "B";
+        }
         protocol = window.location.protocol;
         //console.log(protocol);
         hostname = window.location.hostname;

@@ -18,10 +18,15 @@ class GamificationSetupXBlock(StudioEditableXBlockMixin, XBlock):
     # self.<fieldname>.
 
     # TO-DO: delete count, and define your own fields.
-    count = Integer(
-        default=0, scope=Scope.user_state,
-        help="A simple counter, to show something happening",
+    gamification_type = String(  # Only instantiate widgets
+        display_name="Gamification Type",
+        default="Adaptive", 
+        scope=Scope.settings,
+        help="Adaptive gamification updates user' player types according to his actions. Static gamification does not.",
+        values=["Adaptive", "Static"]
     )
+
+    editable_fields = ('gamification_type')
 
     def resource_string(self, path):
         """Handy helper for getting resources from our kit."""
@@ -76,7 +81,8 @@ class GamificationSetupXBlock(StudioEditableXBlockMixin, XBlock):
         return {
             "username": uname, 
             "course_id" : str(course_id),
-            "tab_id" : tab_id
+            "tab_id" : tab_id,
+            "gtype" : str(self.gamification_type)
             }
 
     # TO-DO: change this to create the scenarios you'd like to see in the

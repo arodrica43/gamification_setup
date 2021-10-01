@@ -112,6 +112,7 @@ function GamificationSetupXBlock(runtime, element) {
         //$('.count', element).text(result.count);
         uname = result["username"]; // read from result
         gtype = result["gtype"]
+        console.log(gtype);
         if(gtype == "Adaptive"){
           gtype = "C2";
         }else{

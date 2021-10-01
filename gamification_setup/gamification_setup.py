@@ -82,7 +82,7 @@ class GamificationSetupXBlock(StudioEditableXBlockMixin, XBlock):
             "username": uname, 
             "course_id" : str(course_id),
             "tab_id" : tab_id,
-            "gtype" : str(self.gamification_type)
+            "gtype" : self.gamification_type
             }
 
     # TO-DO: change this to create the scenarios you'd like to see in the

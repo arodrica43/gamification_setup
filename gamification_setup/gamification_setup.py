@@ -18,6 +18,14 @@ class GamificationSetupXBlock(StudioEditableXBlockMixin, XBlock):
     # self.<fieldname>.
 
     # TO-DO: delete count, and define your own fields.
+
+    display_name = String(
+        display_name= ("Title (Display name)"),
+        help=("Title to display"),
+        default=("Gamification Questionnaire XBlock"),
+        scope=Scope.settings
+    )
+
     gamification_type = String(  # Only instantiate widgets
         display_name="Gamification Type",
         default="Adaptive", 
@@ -26,7 +34,7 @@ class GamificationSetupXBlock(StudioEditableXBlockMixin, XBlock):
         values=["Adaptive", "Static"]
     )
 
-    editable_fields = ('gamification_type')
+    editable_fields = ('display_name', 'gamification_type')
 
     def resource_string(self, path):
         """Handy helper for getting resources from our kit."""

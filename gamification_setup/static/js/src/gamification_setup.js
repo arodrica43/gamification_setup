@@ -118,6 +118,7 @@ function GamificationSetupXBlock(runtime, element) {
         }else{
           gtype = "B";
         }
+        console.log(gtype);
         protocol = window.location.protocol;
         //console.log(protocol);
         hostname = window.location.hostname;

@@ -3,7 +3,7 @@
 import pkg_resources
 from web_fragments.fragment import Fragment
 from xblock.core import XBlock
-from xblock.fields import Integer, Scope
+from xblock.fields import Integer, Scope, String
 from xblockutils.studio_editable import StudioEditableXBlockMixin
 from django.contrib.auth.models import User
 from xmodule.modulestore.django import modulestore

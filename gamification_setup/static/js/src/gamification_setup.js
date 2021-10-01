@@ -111,7 +111,7 @@ function GamificationSetupXBlock(runtime, element) {
         //  - dashboard_url
         //$('.count', element).text(result.count);
         uname = result["username"]; // read from result
-        gtype = result["gtype"]
+        gtype = result["gtype"];
         console.log(gtype);
         if(gtype == "Adaptive"){
           gtype = "C2";

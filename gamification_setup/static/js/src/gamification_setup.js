@@ -61,12 +61,7 @@ function create_user(){
                     "badges":[],
                     "unlockables":[],
                     "challenges":[], 
-                    "gifts" : [], 
-                    "accessible_mechanics" : [], 
-                    "position" : 0,
-                    "progress" : 0,
-                    "last_score" : 0,
-                    "mean_score" : 0,
+                    "gifts" : [],
                     "case" : gtype, // Case selection
                     "edx_data" : {}
                     })

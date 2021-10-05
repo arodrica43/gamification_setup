@@ -63,8 +63,12 @@ function create_user(){
                     "challenges":[], 
                     "gifts" : [], 
                     "accessible_mechanics" : [], 
+                    "position" : 0,
                     "progress" : 0,
-                    "case" : gtype // Case selection
+                    "last_score" : 0,
+                    "mean_score" : 0,
+                    "case" : gtype, // Case selection
+                    "edx_data" : {}
                     })
             },
             emotion_profile: {

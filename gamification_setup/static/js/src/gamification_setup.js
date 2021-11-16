@@ -163,7 +163,7 @@ function GamificationSetupXBlock(runtime, element) {
         .then(response => response.json())
         .then(function(resJson){
           console.log(resJson);
-          if(esJson.user.username != "undefined"){
+          if(resJson.user.username != "undefined"){
             console.log("Gamification user found: " + resJson.user.username);
           }else{
             throw Error("Gamified user not found: Initial questionnaire shown.");

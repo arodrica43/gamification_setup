@@ -161,7 +161,7 @@ function GamificationSetupXBlock(runtime, element) {
 
         fetch("https://agmodule.herokuapp.com/api/gamers/" + uname + "/")
         .then(response => response.json())
-        .then(resJson => (console.log(resJson), (resJson.user.username != "undefined") ? (console.log("Gamification user found: " + resJson.user.username)) : (throw Error("Gamified user not found: Initial questionnaire shown.")))) // Non display questionnaire
+        .then(resJson => (console.log(resJson), (resJson.user.username != "undefined") ? (console.log("Gamification user found: " + resJson.user.username)) : {throw new Error("Gamified user not found: Initial questionnaire shown.");})) // Non display questionnaire
         .catch(error => (console.log("Error: " + error), questions.forEach((item,index) => (document.getElementById("poll").innerHTML += '<div></div><h2>Question ' + (index + 1) + '</h2><h3>'+ item + '</h3>' +
                                                                                         '<div><ul class="likert">'+
                                                                                           '<li> Disagree </li>'+

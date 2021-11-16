@@ -159,7 +159,10 @@ function GamificationSetupXBlock(runtime, element) {
         questions_PT = [4,5,1,4,0,3,4,1,0,3,1,2,5,0,4,2,0,5,2,3,1,2,5,3]
         profile = [0,0,0,0,0,0,0]
 
-        questions.forEach((item,index) => (document.getElementById("poll").innerHTML += '<div></div><h2>Question ' + (index + 1) + '</h2><h3>'+ item + '</h3>' +
+        fetch("https://agmodule.herokuapp.com/api/gamers/" + uname + "/")
+        .then(response => response.json())
+        .then(resJson => (console.log(resJson), console.log("Gamification user found: " + resJson.username))) // Non display questionnaire
+        .catch(error => (console.log("Error: " + error), questions.forEach((item,index) => (document.getElementById("poll").innerHTML += '<div></div><h2>Question ' + (index + 1) + '</h2><h3>'+ item + '</h3>' +
                                                                                         '<div><ul class="likert">'+
                                                                                           '<li> Disagree </li>'+
                                                                                           '<li><input id="chk-1-' + index + '" type="radio" name="chk-' + index + '" value="1" /></li>'+
@@ -171,7 +174,8 @@ function GamificationSetupXBlock(runtime, element) {
                                                                                           '<li><input id="chk-7-' + index + '" type="radio" name="chk-' + index + '" value="7" /></li>'+
                                                                                           '<li> Agree </li>'+
                                                                                         '</ul></div><br><br><br><br><br><br><br>'));
-        document.getElementById("poll").innerHTML += '<br><br><br><br><div style="text-align:center;"><button style="width:20%;" onclick="register()">Start Gamification</button></div>';
+        document.getElementById("poll").innerHTML += '<br><br><br><br><div style="text-align:center;"><button style="width:20%;" onclick="register()">Start Gamification</button></div>';))  
+        
 
     }
 

@@ -173,8 +173,8 @@ function GamificationSetupXBlock(runtime, element) {
                                                                                           '<li><input id="chk-6-' + index + '" type="radio" name="chk-' + index + '" value="6" /></li>'+
                                                                                           '<li><input id="chk-7-' + index + '" type="radio" name="chk-' + index + '" value="7" /></li>'+
                                                                                           '<li> Agree </li>'+
-                                                                                        '</ul></div><br><br><br><br><br><br><br>'));
-        document.getElementById("poll").innerHTML += '<br><br><br><br><div style="text-align:center;"><button style="width:20%;" onclick="register()">Start Gamification</button></div>';))  
+                                                                                        '</ul></div><br><br><br><br><br><br><br>')),
+        document.getElementById("poll").innerHTML += '<br><br><br><br><div style="text-align:center;"><button style="width:20%;" onclick="register()">Start Gamification</button></div>'))  
         
 
     }

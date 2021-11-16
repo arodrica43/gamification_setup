@@ -1,8 +1,8 @@
 #!/bin/bash
 # A sample Bash script, by Ryan
-echo "+ Starting Publish Gamification-XBlock..."
-echo "+ Deploying Gamification-XBlock"
+echo "+ Starting Publish GamificationSetup-XBlock..."
+echo "+ Deploying GamificationSetup-XBlock"
 bash deploy.sh
-echo "+ Producing Gamification-XBlock"
+echo "+ Producing GamificationSetup-XBlock"
 bash produce.sh
-echo "+ Publish Gamification-XBlock done!"
+echo "+ Publish GamificationSetup-XBlock done!"

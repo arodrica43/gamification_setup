@@ -1,5 +1,17 @@
 /* Javascript for GamificationSetupXBlock. */
 
+  //Custom alerts
+    var swal = "";
+    try{
+        require(['https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.js'], 
+            function (Swal) {
+                swal = Swal;
+            }
+        );
+    }catch (cmserr){
+        swal = import("https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.js");
+    }
+
 function register(){
         questions.forEach((item,i) => ([1,2,3,4,5,6,7].forEach((j,k) => ((document.getElementById("chk-" + j + "-" + i).checked) ? profile[questions_PT[i]] += Number(document.getElementById("chk-" + j + "-" + i).value) : console.log("none")))));
         total_sum = profile.reduce((a, b) => a + b, 0);
@@ -18,6 +30,24 @@ function create_user(){
 
     var agHeaders = new Headers();
     agHeaders.append("Content-type", "application/json; charset=UTF-8");
+
+    var PTs = ["Disruptor", "Free Spirit", "Achiever", "Player", "Socializer", "Philantropist"]
+    var PTTexts = [
+      "A aquest tipus de jugadors els hi agrada anar en contra de les normes i el sistema.",
+      "A aquest tipus de jugadors els hi agrada sentir-se lliures i explorar tot el que poden.",
+      "A aquest tipus de jugadors els hi agrada col·leccionar i desbloquejar objectes.",
+      "A aquest tipus de jugadors els hi agraden les competicions i els premis.",
+      "A aquest tipus de jugadors els hi agrada establir relacions personals.",
+      "A aquest tipus de jugadors els hi agrada ajudar als demés incondicionalment.",
+      "Això indica que no desitges fer l'experiència gamificada...",
+    ]
+    var pred_pt_mx = 0;
+    var pred_pt = 7;
+    for (i = 0; i < 7; i++){
+      if(profile[i] > pred_pt_mx){
+        pred_pt = i;
+      }
+    }
 
     var nm_raw = JSON.stringify(
         {
@@ -95,7 +125,12 @@ function create_user(){
         fetch(agURL, ag_requestOptions)
         .then(response => response.json())
         .then(resJson => console.log(resJson)) 
-        .then(dump => alert("Your gamified user have been created!")) 
+        .then(dump => swal.fire({
+                        title: PTs[pred_pt],
+                        text: "Hem detectat que el teu tipus de jugador predominat és " + PTs[pred_pt] + ". " + PTTexts[pred_pt],
+                        icon: 'success',
+                        confirmButtonText: 'Comença'
+                      })) 
         .then(dump2 => (window.location.replace(dashboard_url)))
         .catch(error => (console.log("Error: " + error))) 
         ))
@@ -130,30 +165,30 @@ function GamificationSetupXBlock(runtime, element) {
         //console.log(dashboard_url);
         //console.log("test");
         
-        questions = ["Interactuar con los demás es importante para mí.", 
-                     "Me hace feliz ser capaz de ayudar a los demás.",
-                     "Seguir mi propio camino es importante para mí.",
-                     "Me gusta formar parte de un equipo.",
-                     "Me gusta provocar.",
-                     "Me gustan las competiciones donde se pueda ganar un premio.",
-                     "Sentir que formo parte de una comunidad es importante para mí.",
-                     "A menudo me dejo guiar por la curiosidad.",
-                     "Me gusta cuestionar el estado de las cosas.",
-                     "Los premios son una buena manera de motivarme.",
-                     "Me gusta probar nuevas cosas.",
-                     "Me gusta superar obstáculos.",
-                     "Me gusta guiar a los demás en las nuevas situaciones.",
-                     "Me describo a mí mismo como un rebelde.",
-                     "Disfruto con las actividades grupales.",
-                     "Realizar siempre por completo mis tareas es importante para mí.",
-                     "No me gusta seguir las reglas.",
-                     "Me gusta compartir mi conocimiento con los demás.",
-                     "Me resulta difícil abandonar un problema antes de que haya encontrado una solución.",
-                     "El retorno de inversión es importante para mí.",
-                     "Ser independiente es importante para mí.",
-                     "Me gusta dominar tareas difíciles.",
-                     "El bienestar de los demás es importante para mí.",
-                     "Si el premio es adecuado, voy a hacer un esfuerzo.",
+        questions = ["Interactuar amb els demés és important per a mi.", 
+                     "Em fa feliç ajudar als demés.",
+                     "Seguir el meu propi camí és important per a mi.",
+                     "M'agrada formar part d'un equip.",
+                     "M'agrada provocar.",
+                     "M'agraden les competicions on es poden guanyar premis.",
+                     "Sentir que formo part d'una comunitat és important per a mi.",
+                     "Sovint em deixo guiar per la curiositat.",
+                     "M'agrada qüestionar l'estat de les coses.",
+                     "Els premis son una bona forma de motivar-me.",
+                     "M'agrada provar coses noves.",
+                     "M'agrada superar obstacles.",
+                     "M'agrada guiar als demés en situacions noves.",
+                     "EM descric a mi mateix com un rebel.",
+                     "Disfruto de les activitats grupals.",
+                     "Realitzar sempre les meves tasques completament és important per a mi.",
+                     "No m'agrada seguir les normes.",
+                     "M'agrada compartir el meu coneixament amb els demés.",
+                     "M'és difícil abandonar un problema abans d'haver-hi trobat una solució.",
+                     "M'importa beneficiar-me del que inverteixo (temps, esforç,...)",//"El retorno de inversión es importante para mí.",
+                     "Ser independent és important per a mi.",
+                     "M'agrada dominar tasques difícils.",
+                     "El benestar dels demés és important per a mi.",
+                     "Si el premi és adequat, faré un esforç.",
                     ];
         //Disruptor = 0, Free spirit = 1, Achiever = 2, Player = 3, Socializer = 4, Philantropist = 5, No Player = 6
         questions_PT = [4,5,1,4,0,3,4,1,0,3,1,2,5,0,4,2,0,5,2,3,1,2,5,3]
@@ -165,6 +200,7 @@ function GamificationSetupXBlock(runtime, element) {
           console.log(resJson);
           if(resJson.user.username != "undefined"){
             console.log("Gamification user found: " + resJson.user.username);
+            document.getElementById("poll").innerHTML = "<div>Com ja sabem quin tipus de jugador ets, ja pots començar el curs... <a href='" + dashboard_url + "'>Endavant!</a>  </div>";
           }else{
             throw Error("Gamified user not found: Initial questionnaire shown.");
           }

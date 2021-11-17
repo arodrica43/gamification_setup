@@ -126,7 +126,7 @@ function create_user(){
         .then(dump => swal.fire({
                         title: PTs[pred_pt],
                         text: "El teu tipus de jugador és " + PTs[pred_pt] + ". " + PTTexts[pred_pt],
-                        imageUrl: 'http://agmodule.herokuapp.com/media/player_type_icons/B' + pred_pt + ".png",
+                        imageUrl: 'https://agmodule.herokuapp.com/media/player_type_icons/B' + pred_pt + ".png",
                         imageWidth: 225,
                         imageHeight: 200,
                         imageAlt: 'PT Icon',

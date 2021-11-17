@@ -125,9 +125,9 @@ function create_user(){
         .then(resJson => console.log(resJson)) 
         .then(dump => swal.fire({
                         title: PTs[pred_pt],
-                        text: "El teu tipus de jugador predominant és " + PTs[pred_pt] + ". " + PTTexts[pred_pt],
+                        text: "El teu tipus de jugador és " + PTs[pred_pt] + ". " + PTTexts[pred_pt],
                         imageUrl: 'http://agmodule.herokuapp.com/media/player_type_icons/B' + pred_pt + ".png",
-                        imageWidth: 200,
+                        imageWidth: 225,
                         imageHeight: 200,
                         imageAlt: 'PT Icon',
                         confirmButtonText: 'Comença'
@@ -167,8 +167,7 @@ function GamificationSetupXBlock(runtime, element) {
         //console.log("test");
         stage = result['stage'];
         endpoint = result['endpoint'];
-        console.log(endpoint);
-        console.log(stage);
+
         nmURL = endpoint + "/" + stage + "/player"; 
         agURL = "https://agmodule.herokuapp.com/api/gamers/";
 
@@ -215,7 +214,7 @@ function GamificationSetupXBlock(runtime, element) {
         })
         .catch(error => (console.log("Error: " + error), questions.forEach((item,index) => (document.getElementById("poll").innerHTML += '<div></div><h2>Question ' + (index + 1) + '</h2><h3>'+ item + '</h3>' +
                                                                                         '<div><ul class="likert">'+
-                                                                                          '<li> Disagree </li>'+
+                                                                                          '<li> En desacord </li>'+
                                                                                           '<li><input id="chk-1-' + index + '" type="radio" name="chk-' + index + '" value="1" /></li>'+
                                                                                           '<li><input id="chk-2-' + index + '" type="radio" name="chk-' + index + '" value="2" /></li>'+
                                                                                           '<li><input id="chk-3-' + index + '" type="radio" name="chk-' + index + '" value="3" /></li>'+
@@ -223,9 +222,9 @@ function GamificationSetupXBlock(runtime, element) {
                                                                                           '<li><input id="chk-5-' + index + '" type="radio" name="chk-' + index + '" value="5" /></li>'+
                                                                                           '<li><input id="chk-6-' + index + '" type="radio" name="chk-' + index + '" value="6" /></li>'+
                                                                                           '<li><input id="chk-7-' + index + '" type="radio" name="chk-' + index + '" value="7" /></li>'+
-                                                                                          '<li> Agree </li>'+
+                                                                                          "<li> D'acord </li>"+
                                                                                         '</ul></div><br><br><br><br><br><br><br>')),
-        document.getElementById("poll").innerHTML += '<br><br><br><br><div style="text-align:center;"><button style="width:20%;" onclick="register()">Start Gamification</button></div>'))  
+        document.getElementById("poll").innerHTML += '<br><br><br><br><div style="text-align:center;"><button style="width:20%;" onclick="register()">Quin tipus de jugador soc?</button></div>'))  
         
 
     }

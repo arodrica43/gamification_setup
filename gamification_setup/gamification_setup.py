@@ -8,6 +8,7 @@ from xblockutils.studio_editable import StudioEditableXBlockMixin
 from django.contrib.auth.models import User
 from xmodule.modulestore.django import modulestore
 from xmodule.tabs import CourseTab
+from django.conf import settings
 
 class GamificationSetupXBlock(StudioEditableXBlockMixin, XBlock):
     """
@@ -86,11 +87,16 @@ class GamificationSetupXBlock(StudioEditableXBlockMixin, XBlock):
             except:
                 pass
 
+        endpoint = settings.NANOMOOCS.get('ENDPOINT')
+		stage = settings.NANOMOOCS.get('STAGE')
+
         return {
             "username": uname, 
             "course_id" : str(course_id),
             "tab_id" : tab_id,
-            "gtype" : self.gamification_type
+            "gtype" : self.gamification_type,
+            "stage" : stage,
+            "endpoint" : endpoint
             }
 
     # TO-DO: change this to create the scenarios you'd like to see in the

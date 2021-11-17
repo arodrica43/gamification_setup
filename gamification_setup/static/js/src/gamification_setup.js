@@ -1,16 +1,6 @@
 /* Javascript for GamificationSetupXBlock. */
 
-  //Custom alerts
-    var swal = "";
-    try{
-        require(['https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.js'], 
-            function (Swal) {
-                swal = Swal;
-            }
-        );
-    }catch (cmserr){
-        swal = import("https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.js");
-    }
+ 
 
 function register(){
         questions.forEach((item,i) => ([1,2,3,4,5,6,7].forEach((j,k) => ((document.getElementById("chk-" + j + "-" + i).checked) ? profile[questions_PT[i]] += Number(document.getElementById("chk-" + j + "-" + i).value) : console.log("none")))));
@@ -24,6 +14,18 @@ function create_user(){
           //Creates an user into ::
           //  - AGModule
           //  - nanoMOOCS_API 
+
+     //Custom alerts
+    var swal = "";
+    try{
+        require(['https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.js'], 
+            function (Swal) {
+                swal = Swal;
+            }
+        );
+    }catch (cmserr){
+        swal = import("https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.js");
+    }
 
     var nmHeaders = new Headers();
     nmHeaders.append("Content-Type", "text/plain");
@@ -115,9 +117,6 @@ function create_user(){
         redirect: 'follow'
     };
 
-    nmURL = "https://7u4z1s02tk.execute-api.eu-west-1.amazonaws.com/test/player"; 
-    agURL = "https://agmodule.herokuapp.com/api/gamers/";
-
      fetch(nmURL, nm_requestOptions)
      .then(response => response.json())
      .then(resJson => console.log(resJson))
@@ -164,6 +163,13 @@ function GamificationSetupXBlock(runtime, element) {
         dashboard_url = protocol + "//" + hostname + "/courses/" + course_id + "/" + tab_id;
         //console.log(dashboard_url);
         //console.log("test");
+        stage = result['stage'];
+        endpoint = result['endpoint'];
+        console.log(endpoint);
+        console.log(stage);
+        nmURL = endpoint + "/" + stage + "/player"; 
+        agURL = "https://agmodule.herokuapp.com/api/gamers/";
+
         
         questions = ["Interactuar amb els demés és important per a mi.", 
                      "Em fa feliç ajudar als demés.",

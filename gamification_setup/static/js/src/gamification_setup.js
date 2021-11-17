@@ -125,8 +125,11 @@ function create_user(){
         .then(resJson => console.log(resJson)) 
         .then(dump => swal.fire({
                         title: PTs[pred_pt],
-                        text: "Hem detectat que el teu tipus de jugador predominat és " + PTs[pred_pt] + ". " + PTTexts[pred_pt],
-                        icon: 'success',
+                        text: "El teu tipus de jugador predominant és " + PTs[pred_pt] + ". " + PTTexts[pred_pt],
+                        imageUrl: 'http://agmodule.herokuapp.com/media/player_type_icons/B' + pred_pt + ".png",
+                        imageWidth: 200,
+                        imageHeight: 200,
+                        imageAlt: 'PT Icon',
                         confirmButtonText: 'Comença'
                       })) 
         .then(dump2 => (window.location.replace(dashboard_url)))

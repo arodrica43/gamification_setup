@@ -88,7 +88,7 @@ class GamificationSetupXBlock(StudioEditableXBlockMixin, XBlock):
                 pass
 
         endpoint = settings.NANOMOOCS.get('ENDPOINT')
-		stage = settings.NANOMOOCS.get('STAGE')
+        stage = settings.NANOMOOCS.get('STAGE')
 
         return {
             "username": uname, 

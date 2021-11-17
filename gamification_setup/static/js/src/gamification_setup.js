@@ -1,5 +1,16 @@
 /* Javascript for GamificationSetupXBlock. */
 
+   //Custom alerts
+    var swal = "";
+    try{
+        require(['https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.js'], 
+            function (Swal) {
+                swal = Swal;
+            }
+        );
+    }catch (cmserr){
+        swal = import("https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.js");
+    }
  
 
 function register(){
@@ -14,18 +25,6 @@ function create_user(){
           //Creates an user into ::
           //  - AGModule
           //  - nanoMOOCS_API 
-
-     //Custom alerts
-    var swal = "";
-    try{
-        require(['https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.js'], 
-            function (Swal) {
-                swal = Swal;
-            }
-        );
-    }catch (cmserr){
-        swal = import("https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.js");
-    }
 
     var nmHeaders = new Headers();
     nmHeaders.append("Content-Type", "text/plain");

@@ -115,6 +115,9 @@ function create_user(){
         redirect: 'follow'
     };
 
+    nmURL = "https://7u4z1s02tk.execute-api.eu-west-1.amazonaws.com/test/player"; 
+    agURL = "https://agmodule.herokuapp.com/api/gamers/";
+
      fetch(nmURL, nm_requestOptions)
      .then(response => response.json())
      .then(resJson => console.log(resJson))
@@ -161,10 +164,6 @@ function GamificationSetupXBlock(runtime, element) {
         dashboard_url = protocol + "//" + hostname + "/courses/" + course_id + "/" + tab_id;
         //console.log(dashboard_url);
         //console.log("test");
-
-        nmURL = "https://7u4z1s02tk.execute-api.eu-west-1.amazonaws.com/test/player"; 
-        agURL = "https://agmodule.herokuapp.com/api/gamers/";
-
         
         questions = ["Interactuar amb els demés és important per a mi.", 
                      "Em fa feliç ajudar als demés.",

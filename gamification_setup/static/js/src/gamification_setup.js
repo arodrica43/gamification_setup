@@ -115,13 +115,13 @@ function create_user(){
         redirect: 'follow'
     };
 
-    nmURL = "https://eqsriwyz93.execute-api.eu-west-1.amazonaws.com/dev/player"; 
+    nmURL = "https://7u4z1s02tk.execute-api.eu-west-1.amazonaws.com/test/player"; 
     agURL = "https://agmodule.herokuapp.com/api/gamers/";
 
-    // fetch(nmURL, nm_requestOptions)
-    // .then(response => response.json())
-    // .then(resJson => console.log(resJson))
-    // .then(dump => (
+     fetch(nmURL, nm_requestOptions)
+     .then(response => response.json())
+     .then(resJson => console.log(resJson))
+     .then(dump => (
         fetch(agURL, ag_requestOptions)
         .then(response => response.json())
         .then(resJson => console.log(resJson)) 
@@ -133,8 +133,8 @@ function create_user(){
                       })) 
         .then(dump2 => (window.location.replace(dashboard_url)))
         .catch(error => (console.log("Error: " + error))) 
-        //))
-    //.catch(error => (console.log("Error: " + error)))             
+        ))
+    .catch(error => (console.log("Error: " + error)))             
 }
 
 function GamificationSetupXBlock(runtime, element) {

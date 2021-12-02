@@ -73,7 +73,7 @@ function create_user(){
                 email: ""
             },
             social_profile: {
-                image: "art",
+                image: "O2",
                 description: "Description...",
                 data: {}
             },

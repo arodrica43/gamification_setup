@@ -32,7 +32,7 @@ function create_user(){
     var agHeaders = new Headers();
     agHeaders.append("Content-type", "application/json; charset=UTF-8");
 
-    var PTs = ["Disruptor", "Free Spirit", "Achiever", "Player", "Socializer", "Philantropist"]
+    var PTs = ["Disruptor", "Free Spirit", "Achiever", "Player", "Socializer", "Philantropist", "No Player"]
     var PTTexts = [
       "A aquest tipus de jugadors els hi agrada anar en contra de les normes i el sistema.",
       "A aquest tipus de jugadors els hi agrada sentir-se lliures i explorar tot el que poden.",
@@ -43,12 +43,15 @@ function create_user(){
       "Això indica que no desitges fer l'experiència gamificada...",
     ]
     var pred_pt_mx = 0;
-    var pred_pt = 7;
+    var pred_pt = 0;
+    console.log(profile);
     for (i = 0; i < 7; i++){
       if(profile[i] > pred_pt_mx){
         pred_pt = i;
+        pred_pt_mx = profile[i];
       }
     }
+    console.log(pred_pt);
 
     var nm_raw = JSON.stringify(
         {
@@ -125,7 +128,7 @@ function create_user(){
         .then(resJson => console.log(resJson)) 
         .then(dump => swal.fire({
                         title: PTs[pred_pt],
-                        text: "El teu tipus de jugador és " + PTs[pred_pt] + ". " + PTTexts[pred_pt],
+                        text: "El teu tipus de jugador@ és " + PTs[pred_pt] + ". " + PTTexts[pred_pt],
                         imageUrl: 'https://agmodule.herokuapp.com/media/player_type_icons/B' + pred_pt + ".png",
                         imageWidth: 225,
                         imageHeight: 200,
@@ -207,7 +210,7 @@ function GamificationSetupXBlock(runtime, element) {
           console.log(resJson);
           if(resJson.user.username != "undefined"){
             console.log("Gamification user found: " + resJson.user.username);
-            document.getElementById("poll").innerHTML = "<div>Com ja sabem quin tipus de jugador ets, ja pots començar el curs... <a href='" + dashboard_url + "'>Endavant!</a>  </div>";
+            document.getElementById("poll").innerHTML = "<div>Com ja sabem quin tipus de jugador@ ets, ja pots començar el curs... <a href='" + dashboard_url + "'>Endavant!</a>  </div>";
           }else{
             throw Error("Gamified user not found: Initial questionnaire shown.");
           }

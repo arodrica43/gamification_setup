@@ -11,17 +11,18 @@
     }catch (cmserr){
         swal = import("https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.js");
     }
- 
 
 function register(){
+        answers = [];
+        questions.forEach((item,i) => ([1,2,3,4,5,6,7].forEach((j,k) => ((document.getElementById("chk-" + j + "-" + i).checked) ? answers.push({"question" : i, "answer" : j}) : console.log("none")))));
         questions.forEach((item,i) => ([1,2,3,4,5,6,7].forEach((j,k) => ((document.getElementById("chk-" + j + "-" + i).checked) ? profile[questions_PT[i]] += Number(document.getElementById("chk-" + j + "-" + i).value) : console.log("none")))));
         total_sum = profile.reduce((a, b) => a + b, 0);
         profile.forEach((item,index) => (profile[index] /= total_sum));
         console.log(profile);
-        create_user();
+        create_user(answers);
     }
 
-function create_user(){
+function create_user(answers){
           //Creates an user into ::
           //  - AGModule
           //  - nanoMOOCS_API 
@@ -52,6 +53,15 @@ function create_user(){
       }
     }
     console.log(pred_pt);
+
+    var an_raw = JSON.stringify(
+        {
+            "user" : uname,
+            "timestamp" : Date.now(),
+            "service" : "GAM_HEXAD",
+            "resource" : course_id,
+            "result" : answers
+        });
 
     var nm_raw = JSON.stringify(
         {
@@ -106,6 +116,13 @@ function create_user(){
             }
         });
 
+    var an_requestOptions = {
+        method: 'POST',
+        headers: nmHeaders,
+        body: an_raw,
+        redirect: 'follow'
+    };    
+
     var nm_requestOptions = {
         method: 'POST',
         headers: nmHeaders,
@@ -136,6 +153,12 @@ function create_user(){
                         confirmButtonText: 'Comença'
                       })) 
         .then(dump2 => (window.location.replace(dashboard_url)))
+        .catch(error => (console.log("Error: " + error))) 
+        ))
+     .then(dump => (
+        fetch(anURL, an_requestOptions)
+        .then(response => response.json())
+        .then(resJson => console.log(resJson)) 
         .catch(error => (console.log("Error: " + error))) 
         ))
     .catch(error => (console.log("Error: " + error)))             
@@ -172,6 +195,7 @@ function GamificationSetupXBlock(runtime, element) {
         endpoint = result['endpoint'];
 
         nmURL = endpoint + "/" + stage + "/player"; 
+        anURL = endpoint + "/" + stage + "/analytics"; 
         agURL = "https://agmodule.herokuapp.com/api/gamers/";
 
         

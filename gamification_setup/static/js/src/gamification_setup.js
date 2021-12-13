@@ -151,14 +151,14 @@ function create_user(answers){
                         imageHeight: 200,
                         imageAlt: 'PT Icon',
                         confirmButtonText: 'Comença'
-                      })) 
+                      }))
+        .then(dump => (
+          fetch(anURL, an_requestOptions)
+            .then(response => response.json())
+            .then(resJson => console.log(resJson)) 
+            .catch(error => (console.log("Error: " + error))) 
+          ))
         .then(dump2 => (window.location.replace(dashboard_url)))
-        .catch(error => (console.log("Error: " + error))) 
-        ))
-     .then(dump => (
-        fetch(anURL, an_requestOptions)
-        .then(response => response.json())
-        .then(resJson => console.log(resJson)) 
         .catch(error => (console.log("Error: " + error))) 
         ))
     .catch(error => (console.log("Error: " + error)))             

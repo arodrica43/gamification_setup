@@ -63,6 +63,15 @@ function create_user(answers){
             "result" : answers
         });
 
+    var an2_raw = JSON.stringify(
+        {
+            "user" : uname,
+            "timestamp" : Date.now(),
+            "service" : "GAM_PROFILE",
+            "resource" : course_id,
+            "result" : profile
+        });
+
     var nm_raw = JSON.stringify(
         {
             "id": uname,
@@ -121,7 +130,13 @@ function create_user(answers){
         headers: nmHeaders,
         body: an_raw,
         redirect: 'follow'
-    };    
+    };   
+    var an2_requestOptions = {
+        method: 'POST',
+        headers: nmHeaders,
+        body: an2_raw,
+        redirect: 'follow'
+    };  
 
     var nm_requestOptions = {
         method: 'POST',
@@ -145,6 +160,12 @@ function create_user(answers){
         .then(resJson => console.log(resJson))
         .then(dump => (
           fetch(anURL, an_requestOptions)
+            .then(response => response.json())
+            .then(resJson => console.log(resJson)) 
+            .catch(error => (console.log("Error: " + error))) 
+          )) 
+        .then(dump => (
+          fetch(anURL, an2_requestOptions)
             .then(response => response.json())
             .then(resJson => console.log(resJson)) 
             .catch(error => (console.log("Error: " + error))) 

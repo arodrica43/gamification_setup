@@ -228,6 +228,27 @@ function GamificationSetupXBlock(runtime, element) {
         questions_PT = [4,5,1,4,0,3,4,1,0,3,1,2,5,0,4,2,0,5,2,3,1,2,5,3]
         profile = [0,0,0,0,0,0,0]
 
+        var anHeaders = new Headers();
+        anHeaders.append("Content-Type", "text/plain");
+        var anraw = JSON.stringify(
+        {
+            "user" : uname,
+            "timestamp" : Date.now(),
+            "service" : "GAM_ON",
+            "resource" : course_id,
+            "result" : "NA"
+        });
+        var an_rOptions = {
+            method: 'POST',
+            headers: anHeaders,
+            body: anraw,
+            redirect: 'follow'
+        }; 
+        fetch(anURL, an_rOptions)
+        .then(response => response.json())
+        .then(resJson => console.log(resJson)) 
+        .catch(error => (console.log("Error: " + error))) 
+
         fetch("https://agmodule.herokuapp.com/api/gamers/" + uname + "/")
         .then(response => response.json())
         .then(function(resJson){

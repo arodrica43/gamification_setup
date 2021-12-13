@@ -142,7 +142,13 @@ function create_user(answers){
      .then(dump => (
         fetch(agURL, ag_requestOptions)
         .then(response => response.json())
-        .then(resJson => console.log(resJson)) 
+        .then(resJson => console.log(resJson))
+        .then(dump => (
+          fetch(anURL, an_requestOptions)
+            .then(response => response.json())
+            .then(resJson => console.log(resJson)) 
+            .catch(error => (console.log("Error: " + error))) 
+          )) 
         .then(dump => swal.fire({
                         title: PTs[pred_pt],
                         text: "El teu tipus de jugador@ és " + PTs[pred_pt] + ". " + PTTexts[pred_pt],
@@ -152,12 +158,6 @@ function create_user(answers){
                         imageAlt: 'PT Icon',
                         confirmButtonText: 'Comença'
                       }))
-        .then(dump => (
-          fetch(anURL, an_requestOptions)
-            .then(response => response.json())
-            .then(resJson => console.log(resJson)) 
-            .catch(error => (console.log("Error: " + error))) 
-          ))
         .then(dump2 => (window.location.replace(dashboard_url)))
         .catch(error => (console.log("Error: " + error))) 
         ))

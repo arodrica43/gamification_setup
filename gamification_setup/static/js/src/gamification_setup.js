@@ -217,6 +217,7 @@ function GamificationSetupXBlock(runtime, element) {
 
         nmURL = endpoint + "/" + stage + "/player"; 
         anURL = endpoint + "/" + stage + "/analytics"; 
+        console.log(anURL);
         agURL = "https://agmodule.herokuapp.com/api/gamers/";
 
         

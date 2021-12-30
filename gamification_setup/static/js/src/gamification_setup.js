@@ -56,7 +56,7 @@ function create_user(answers){
 
     var an_raw = JSON.stringify(
         {
-            "user" : uname,
+            "user" : user_id,
             "timestamp" : (new Date(Date.now())).toISOString(),
             "service" : "GAM_HEXAD",
             "resource" : course_id,
@@ -65,7 +65,7 @@ function create_user(answers){
 
     var an2_raw = JSON.stringify(
         {
-            "user" : uname,
+            "user" : user_id,
             "timestamp" : (new Date(Date.now())).toISOString(),
             "service" : "GAM_PROFILE",
             "resource" : course_id,
@@ -206,6 +206,8 @@ function GamificationSetupXBlock(runtime, element) {
         hostname = window.location.hostname;
         //console.log(hostname);
         course_id = result["course_id"];
+        user_id = result["user_id"];
+        console.log("UID " + user_id)
         //console.log(course_id);
         tab_id = result["tab_id"];
         //console.log(tab_id);
@@ -254,7 +256,7 @@ function GamificationSetupXBlock(runtime, element) {
         anHeaders.append("Content-Type", "text/plain");
         var anraw = JSON.stringify(
         {
-            "user" : uname,
+            "user" : user_id,
             "timestamp" : (new Date(Date.now())).toISOString(),
             "service" : "GAM_ON",
             "resource" : course_id,
